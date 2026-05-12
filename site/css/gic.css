@@ -1,0 +1,761 @@
+/* GIC.css Version 1.1.0
+ * (c) Copyright Ariadne (me@aria.rip) 2026.
+ * Made available under the MIT license */
+:root {
+    --font-variable: "Inter", sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+
+    /* Colour palette */
+    --blue: #1d70b8;
+    --blue-tint-25: #5694ca;
+    --blue-tint-50: #8eb8dc;
+    --blue-tint-80: #d2e2f1;
+    --blue-tint-95: #f4f8fb;
+    --blue-shade-25: #16548a;
+    --blue-shade-50: #0f385c;
+    --blue-shade-10: #1a65a6;;
+    --blue-shade-95: #030B12;
+    --green: #0f7a52;
+    --green-tint-25: #4b9b7d;
+    --green-tint-50: #87bca8;
+    --green-tint-80: #cfe4dc;
+    --green-tint-95: #f3f8f6;
+    --green-shade-25: #0b5c3e;
+    --green-shade-50: #083d29;
+    --teal: #158187;
+    --teal-tint-25: #50a1a5;
+    --teal-tint-50: #8ac0c3;
+    --teal-tint-80: #d0e6e7;
+    --teal-tint-95: #f3f9f9;
+    --teal-shade-25: #106165;
+    --teal-shade-50: #0b4144;
+    --teal-accent: #00ffe0;
+    --purple: #54319f;
+    --purple-tint-25: #7f65b7;
+    --purple-tint-50: #aa98cf;
+    --purple-tint-80: #ddd6ec;
+    --purple-tint-95: #f6f5fa;
+    --purple-shade-25: #3f2577;
+    --purple-shade-50: #2a1950;
+    --magenta: #ca357c;
+    --magenta-tint-25: #d7689d;
+    --magenta-tint-50: #e59abe;
+    --magenta-tint-80: #f4d7e5;
+    --magenta-tint-95: #fcf5f8;
+    --magenta-shade-25: #98285d;
+    --magenta-shade-50: #651b3e;
+    --red: #ca3535;
+    --red-tint-25: #d76868;
+    --red-tint-50: #e59a9a;
+    --red-tint-80: #f4d7d7;
+    --red-tint-95: #fcf5f5;
+    --red-shade-25: #982828;
+    --red-shade-50: #651b1b;
+    --orange: #f47738;
+    --orange-tint-25: #f7996a;
+    --orange-tint-50: #fabb9c;
+    --orange-tint-80: #fde4d7;
+    --orange-tint-95: #fef8f5;
+    --orange-shade-25: #b7592a;
+    --orange-shade-50: #7a3c1c;
+    --yellow: #ffdd00;
+    --yellow-tint-25: #ffe640;
+    --yellow-tint-50: #ffee80;
+    --yellow-tint-80: #fff8cc;
+    --yellow-tint-95: #fffdf2;
+    --yellow-shade-25: #bfa600;
+    --yellow-shade-50: #806f00;
+    --brown: #99704a;
+    --brown-tint-25: #b39477;
+    --brown-tint-50: #ccb8a5;
+    --brown-tint-95: #faf8f6;
+    --black: #0b0c0c;
+    --black-tint-25: #484949;
+    --black-tint-50: #858686;
+    --black-tint-80: #cecece;
+    --black-tint-95: #f3f3f3;
+    --white: #ffffff;
+
+
+    --colour-brand: var(--blue);
+
+    --colour-text: var(--black);
+    --colour-body-background: var(--white);
+
+    /* Used in for example 'muted' text and help text. */
+    --colour-text-secondary: var(--black-tint-25);
+
+    --colour-focus: var(--yellow);
+    --colour-focus-text: var(--black);
+
+    --colour-error: var(--red);
+    --colour-success: var(--green);
+
+    /* Used in for example borders, separators, rules and keylines. */
+    --colour-border: var(--black-tint-80);
+    /* Used for form inputs and controls */
+    --colour-input-border: var(--black);
+    /* Used for hover states on form controls */
+    --colour-hover: var(--black-tint-80);
+    /* Standard links (on white) */
+    --colour-link: var(--blue-shade-10);
+    --colour-link-visited: var(--purple);
+    --colour-link-hover: var(--blue-shade-50);
+    --colour-link-active: var(--black);
+
+    /* 'Surfaces' are our name for components that have different colour */
+    /* palettes to typical page content. This is the generic surface. */
+    --colour-surface-background: var(--blue-tint-95);
+    --colour-surface-text: var(--black);
+    --colour-surface-board: var(--blue-tint-50);
+
+    --width-input-border: 2px;
+    --width-form-group-error: 5px;
+    --width-focus: 3px;
+
+    --font-size-80: 53px;
+    --line-height-80: 55px;
+    --font-size-48: 32px;
+    --line-height-48: 35px;
+    --font-size-36: 27px;
+    --line-height-36: 30px;
+    --font-size-27: 21px;
+    --line-height-27: 25px;
+    --font-size-24: 21px;
+    --line-height-24: 25px;
+    --font-size-19: 19px;
+    --line-height-19: 25px;
+    --font-size-16: 16px;
+    --line-height-16: 20px;
+
+    --spacing-0: 0;
+    --spacing-1: 5px;
+    --spacing-2: 10px;
+    --spacing-3: 15px;
+    --spacing-4: 15px;
+    --spacing-5: 15px;
+    --spacing-6: 20px;
+    --spacing-7: 25px;
+    --spacing-8: 30px;
+    --spacing-9: 40px;
+
+    @media screen and (min-width: 641px) { /* tablet */
+        --font-size-80: 80px;
+        --line-height-80: 80px;
+        --font-size-48: 48px;
+        --line-height-48: 50px;
+        --font-size-36: 36px;
+        --line-height-36: 40px;
+        --font-size-27: 27px;
+        --line-height-27: 30px;
+        --font-size-24: 24px;
+        --line-height-24: 30px;
+        --spacing-4: 20px;
+        --spacing-5: 25px;
+        --spacing-6: 30px;
+        --spacing-7: 40px;
+        --spacing-8: 50px;
+        --spacing-9: 60px;
+    }
+
+    @media print {
+        --colour-text: #000000;
+        --font-size-80: 53pt;
+        --line-height-80: 1.1;
+        --font-size-48: 32pt;
+        --line-height-48: 1.15;
+        --font-size-36: 24pt;
+        --line-height-36: 1.05;
+        --font-size-27: 18pt;
+        --line-height-27: 1.15;
+        --font-size-24: 18pt;
+        --line-height-24: 1.15;
+        --font-size-19: 14pt;
+        --line-height-19: 1.15;
+        --font-size-16: 14pt;
+        --line-height-16: 1.2;
+    }
+}
+
+
+/* eeeee e    e eeeee eeeee eeeee eeeee  eeeee eeeee e   e e    e  */
+/*   8   8    8 8   8 8  88 8   8 8   8  8   8 8   8 8   8 8    8  */
+/*   8e  8eeee8 8eee8 8   8 8e    8eee8e 8eee8 8eee8 8eee8 8eeee8  */
+/*   88    88   88    8   8 88 "8 88   8 88  8 88    88  8   88    */
+/*   88    88   88    8eee8 88ee8 88   8 88  8 88    88  8   88 */
+html { background: var(--colour-surface-background); }
+
+body {
+    font-family: var(--font-variable);
+    font-weight: var(--font-weight-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    color: var(--colour-text);
+    background: var(--colour-body-background);
+
+    margin: 0;
+
+    /* Prevent automatic text sizing, as we already cater for small devices and */
+    /* would like the browser to stay on 100% text zoom by default. */
+    text-size-adjust: 100%;
+}
+
+h1,h2,h3,h4 { font-weight: var(--font-weight-bold); margin-top: 0; }
+span.caption { color: var(--colour-text-secondary); display: block; }
+
+p {
+    margin-top: 0;
+}
+
+/* sizing stuff. */
+h1 { font-size: var(--font-size-48); line-height: var(--line-height-48); margin-bottom: var(--spacing-8); }
+h2 { font-size: var(--font-size-36); line-height: var(--line-height-36); margin-bottom: var(--spacing-6); }
+h3 { font-size: var(--font-size-24); line-height: var(--line-height-24); margin-bottom: var(--spacing-4); }
+h4 { font-size: var(--font-size-19); line-height: var(--line-height-19); margin-bottom: var(--spacing-4); }
+p { font-size: var(--font-size-19); line-height: var(--line-height-19); margin-bottom: var(--spacing-4); }
+p.large { font-size: var(--font-size-24); line-height: var(--line-height-24); margin-bottom: var(--spacing-6); }
+p.small { font-size: var(--font-size-16); line-height: var(--line-height-16); margin-bottom: var(--spacing-4); }
+
+span.caption:has(+ h1) { font-size: var(--font-size-27); line-height: var(--line-height-27); margin-bottom: var(--spacing-1); }
+span.caption:has(+ h2) { font-size: var(--font-size-24); line-height: var(--line-height-24); margin-bottom: var(--spacing-1); }
+span.caption:has(+ h3) { font-size: var(--font-size-19); line-height: var(--line-height-19); }
+
+/* Add top padding to headings that appear directly after paragraphs. */
+p.large + h2 { padding-top: var(--spacing-1); }
+
+p + h2,
+ul + h2,
+ol + h2 { padding-top: var(--spacing-4); }
+
+p + h3,
+ul + h3,
+ol + h3,
+p + h4,
+ul + h4,
+ol + h4 { padding-top: var(--spacing-1); }
+
+a {
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, .0625rem);
+    text-decoration-offset: 0.1578em;
+    color: var(--colour-link);
+
+    &:not(.no-visited):visited {
+        color: var(--colour-link-visited);
+    }
+
+    &:hover {
+        color: var(--colour-link-hover);
+        text-decoration-thickness: max(3px, .1875rem, .12em);
+        text-decoration-skip-ink: none;
+        text-decoration-skip: none;
+    }
+
+    &:active {
+        color: var(--colour-link-active);
+    }
+
+    /* When focussed, the text colour needs to be darker to ensure that colour */
+    /* contrast is still acceptable */
+    &:focus {
+        color: var(--colour-focus-text);
+    }
+
+    /* Show URL when printing */
+    @media print {
+        &[href^="/"],
+        &[href^="http://"],
+        &[href^="https://"] {
+            &::after {
+                content: " (" attr(href) ")";
+                font-size: 90%;
+                word-wrap: break-word;
+            }
+        }
+    }
+
+    &.inverse {
+        &,
+        &:visited {
+            color: var(--white);
+        }
+
+        &:focus {
+            color: var(--colour-focus-text);
+        }
+    }
+
+    &.error {
+        &,
+        &:visited {
+            color: var(--colour-error);
+        }
+
+        &:hover {
+            color: var(--red-shade-50);
+        }
+
+        &:active {
+            color: var(--colour-error);
+        }
+
+        &:focus {
+            color: var(--colour-focus-text);
+        }
+    }
+
+    &.success {
+        &,
+        &:visited {
+            color: var(--colour-success);
+        }
+
+        &:hover {
+            color: var(--green-shade-50);
+        }
+
+        &:active {
+            color: var(--colour-success);
+        }
+
+        &:focus {
+            color: var(--colour-focus-text);
+        }
+    }
+
+
+    &.no-underline:not(:hover):not(:active) {
+        text-decoration: none;
+    }
+}
+
+
+ul, ol {
+    font-size: var(--font-size-19);
+    line-spacing: var(--line-spacing-19);
+
+    margin-top: 0;
+    margin-bottom: var(--spacing-4);
+
+    color: var(--colour-text);
+
+    padding-left: var(--spacing-4);
+    /* list-style-type: disc; */
+    &.no-bullet {
+        padding-left: 0;
+        list-style-type: none;
+        > li {
+            margin-bottom: var(--spacing-1);
+        }
+    }
+
+    /* Add a top margin for nested lists */
+    ul, ol {
+      margin-top: var(--spacing-2);
+    }
+
+
+    /* Lists without numbers or bullets should always have extra space between */
+    /* list items. Lists with numbers or bullets only have this extra space on */
+    /* tablet and above */
+    > li {
+        margin-bottom: 0;
+        @media screen and (min-width: 641px) { /* tablet */
+            margin-bottom: var(--spacing-1);
+        }
+    }
+
+    &.extra-space > li {
+        margin-bottom: var(--spacing-2);
+        @media screen and (min-width: 641px) { /* tablet */
+            margin-bottom: var(--spacing-3);
+        }
+    }
+}
+
+
+/* section spacer */
+hr { margin: var(--spacing-4) 0; border: 0; }
+hr.xl { margin: var(--spacing-8) 0; }
+hr.l { margin: var(--spacing-6) 0; }
+hr.visible { border-bottom: 1px solid var(--colour-border) }
+
+/* utilities */
+.break-word { word-break: break-word; }
+
+/*                   oo       dP           */
+/*                            88           */
+/* .d8888b. 88d888b. dP .d888b88 .d8888b.  */
+/* 88'  `88 88'  `88 88 88'  `88 Y8ooooo.  */
+/* 88.  .88 88       88 88.  .88       88  */
+/* `8888P88 dP       dP `88888P8 `88888P'  */
+/*      .88                                */
+/*  d8888P */
+main {
+    padding: var(--spacing-6) 0;
+}
+
+grid-container {
+    --size-gutter: 30px;
+    --size-gutter-half: calc(var(--size-gutter) / 2);
+    --size-page-width: 960px;
+
+    max-width: var(--size-page-width);
+
+    margin-left: var(--size-gutter-half);
+    margin-right: var(--size-gutter-half);
+
+    /* On tablet, add full width gutters */
+    @media screen and (min-width: 641px) { /* tablet */
+        margin-right: var(--size-gutter);
+        margin-left: var(--size-gutter);
+    }
+
+    /* As soon as the viewport is greater than the width of the page plus the */
+    /* gutters, just centre the content instead of adding gutters. */
+    @media (min-width: 1020px) {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: var(--size-gutter);
+}
+
+
+/* By default, column spans only apply past the tablet breakpoint */
+.whole-row { grid-column-start: span 12; }
+.one-third { grid-column-start: span 12; }
+.two-thirds { grid-column-start: span 12; }
+.one-half { grid-column-start: span 12; }
+.one-quarter { grid-column-start: span 12; }
+.two-quarters { grid-column-start: span 12; }
+.three-quarters { grid-column-start: span 12; }
+
+/* Force applying the whole time */
+.mobile-whole-row { grid-column-start: span 12; }
+.mobile-one-third { grid-column-start: span 4; }
+.mobile-two-thirds { grid-column-start: span 8; }
+.mobile-one-half { grid-column-start: span 6; }
+.mobile-one-quarter { grid-column-start: span 3; }
+.mobile-two-quarters { grid-column-start: span 6; }
+.mobile-three-quarters { grid-column-start: span 9; }
+
+@media screen and (min-width: 641px) { /* tablet */
+    .whole-row { grid-column-start: span 12; }
+    .one-third { grid-column-start: span 4; }
+    .two-thirds { grid-column-start: span 8; }
+    .one-half { grid-column-start: span 6; }
+    .one-quarter { grid-column-start: span 3; }
+    .two-quarters { grid-column-start: span 6; }
+    .three-quarters { grid-column-start: span 9; }
+
+    .tablet-whole-row { grid-column-start: span 12; }
+    .tablet-one-third { grid-column-start: span 4; }
+    .tablet-two-thirds { grid-column-start: span 8; }
+    .tablet-one-half { grid-column-start: span 6; }
+    .tablet-one-quarter { grid-column-start: span 3; }
+    .tablet-two-quarters { grid-column-start: span 6; }
+    .tablet-three-quarters { grid-column-start: span 9; }
+}
+
+@media screen and (min-width: 769px) { /* desktop */
+    .desktop-whole-row { grid-column-start: span 12; }
+    .desktop-one-third { grid-column-start: span 4; }
+    .desktop-two-thirds { grid-column-start: span 8; }
+    .desktop-one-half { grid-column-start: span 6; }
+    .desktop-one-quarter { grid-column-start: span 3; }
+    .desktop-two-quarters { grid-column-start: span 6; }
+    .desktop-three-quarters { grid-column-start: span 9; }
+}
+
+/* _  _ ____ ____ ___  ____ ____    ____ ____ ____ ___ ____ ____  */
+/* |__| |___ |__| |  \ |___ |__/    |___ |  | |  |  |  |___ |__/  */
+/* |  | |___ |  | |__/ |___ |  \    |    |__| |__|  |  |___ |  \  */
+/*                                                                */
+header.masthead {
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+
+    border-bottom: 1px solid transparent;
+    color: var(--white);
+    background: var(--colour-brand);
+
+    padding: 16px;
+
+    a {
+        display: inline;
+        margin-right: var(--spacing-2);
+        font-size: 30px;
+        text-decoration: none;
+        color: inherit;
+
+        &:visited { color: inherit; }
+    }
+}
+
+footer {
+    font-size: var(--font-size-19);
+    line-height: var(--line-height-19);
+
+    padding: var(--spacing-5) 0;
+
+    border-top: 10px solid var(--colour-brand);
+    color: var(--colour-footer-text);
+    background: var(--colour-surface-background);
+}
+
+/* ____ ____ ____ _  _ ____  */
+/* |___ |  | |__/ |\/| [__   */
+/* |    |__| |  \ |  | ___]  */
+/*                           */
+input {
+    font-size: var(--font-size-19);
+    line-height: var(--line-height-19);
+
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 0;
+    padding: var(--spacing-1);
+
+
+    border: var(--width-input-border) var(--colour-input-border) solid;
+    border-radius: 0;
+    appearance: none;
+
+    &:focus {
+        outline: var(--width-focus) solid var(--colour-focus);
+        outline-offset: 0;
+        /* Double the border by adding its width again. Use `box-shadow` for this */
+        /* instead of changing `border-width` - this is for consistency with */
+        /* components such as textarea where we avoid changing `border-width` as */
+        /* it will change the element size. Also, `outline` cannot be utilised */
+        /* here as it is already used for the yellow focus state. */
+        box-shadow: inset 0 0 0 var(--width-input-border) var(--colour-input-border);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        color: inherit;
+        background-color: transparent;
+        cursor: not-allowed;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        margin: 0;
+        -webkit-appearance: none;
+    }
+
+    &[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    &.extra-letter-spacing {
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.05em;
+    }
+
+
+    @media screen and (max-width: 640px) { /* until mobile */
+        display: block;
+        max-width: 100%;
+    }
+}
+
+input-wrapper {
+    display: flex;
+    input { flex: 0 1 auto; }
+}
+
+input-prefix, input-suffix {
+    font-family: var(--font-size-19);
+    line-height: var(--line-height-19);
+
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-width: 1rem;
+    padding: var(--spacing-1);
+    border: var(--width-input-border) var(--colour-input-border) solid;
+
+    background-color: var(--black-tint-95);
+    text-align: center;
+    white-space: nowrap;
+    cursor: default;
+
+}
+input-prefix { border-right: 0; }
+input-suffix { border-left: 0; }
+
+.width-30 { max-width: 29.5em; }
+.width-20 { max-width: 20.5em; }
+.width-10 { max-width: 11.5em; }
+.width-5 { max-width: 5.5em; }
+.width-4 { max-width: 4.5em; }
+.width-3 { max-width: 3.75em; }
+.width-2 { max-width: 2.75em; }
+
+
+form-group {
+    margin-bottom: var(--spacing-6);
+    display: block;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &:has(.error), &:has(input:invalid) {
+        padding-left: var(--spacing-3);
+        border-left: var(--width-form-group-error) solid var(--colour-error);
+    }
+}
+
+input:invalid,
+textarea:invalid,
+form-group:has(.error) input,
+form-group:has(.error) textarea {
+    border-color: var(--colour-error);
+    &:focus { border-color: var(--colour-input-border); }
+}
+
+.error:not(a) {
+    font-size: var(--font-size-19);
+    line-height: var(--line-height-19);
+
+    font-weight: var(--font-weight-bold);
+
+    display: block;
+    margin-top: 0;
+    margin-bottom: var(--spacing-3);
+    clear: both;
+    color: var(--colour-error);
+}
+
+label {
+    display: block;
+    margin-bottom: var(--spacing-1);
+    color: var(--color-text);
+}
+
+h1 > label,
+h2 > label,
+h3 > label {
+    margin-bottom: var(--spacing-3);
+}
+
+h1 > label { font-size: var(--font-size-48); }
+
+h1:has(> label),
+h2:has(> label),
+h3:has(> label) {
+    margin: 0;
+}
+
+.hint {
+    font-size: var(--font-size-19);
+    line-height: var(--line-height-19);
+
+    display: block;
+    margin-bottom: var(--spacing-3);
+
+    color: var(--colour-secondary-text);
+}
+
+textarea {
+    font-size: var(--font-size-19);
+    line-height: 1.25;
+
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    margin-bottom: var(--spacing-6);
+    padding: var(--spacing-1);
+
+    resize: vertical;
+    border: var(--width-input-border) solid var(--colour-input-border);
+    border-radius: 0;
+    -webkit-appearance: none;
+
+    &:focus {
+        outline: var(--width-focus) solid var(--colour-focus);
+        outline-offset: 0;
+        box-shadow: inset 0 0 0 var(--width-input-border) var(--colour-input-border);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      color: inherit;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+}
+
+button {
+    --button-bg: var(--green-shade-25);
+    --button-bg-darker: var(--green-shade-50);
+    --text: var(--white);
+
+    text-decoration: none;
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-80)
+    line-height: 1;
+    text-align: center;
+
+    display: inline-block;
+    position: relative;
+
+    margin: 0 0 22px;
+    margin-bottom: 22px;
+    padding: 8px 10px 7px;
+    border: 2px solid transparent;
+
+    color: var(--text);
+    box-shadow: 0 2px 0 var(--button-bg-darker);
+    background-color: var(--button-bg);
+
+    &:hover {
+        background-color: var(--button-bg-darker);
+    }
+
+    &:active {
+        top: 2px;
+    }
+
+    &:focus {
+        border-color: var(--colour-focus);
+        box-shadow: 0 var(--width-input-border) 0 var(--colour-focus-text);
+        outline: var(--width-focus) solid transparent;
+    }
+
+    &.secondary {
+        --button-bg: var(--black-tint-95);
+        --button-bg-darker: var(--black-tint-80);
+        --text: var(--colour-text);
+    }
+    &.warning {
+        --button-bg: var(--red-shade-25);
+        --button-bg-darker: var(--red-shade-50);
+    }
+    &.inverse {
+        --button-bg: var(--blue-tint-80);
+        --button-bg-darker: var(--blue-tint-95);
+    }
+    &[disabled] {
+        opacity: .5;
+        cursor: notallowed;
+
+        &:hover {
+            background-color: var(--button-bg);
+        }
+        &:active {
+            top: 0;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+#jumbotron {
+    text-align: center;
+    padding: 2rem;
+}
+
+#logo {
+    transition:transform 1.2s ease-in-out;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 1rem;
+}
+#logo:hover {
+    transform:rotate(360deg);
+}
+
+html {
+    background: var(--black-tint-95);
+}

@@ -1,0 +1,5 @@
+.direnv
+.envrc
+build/
+.soupault-cache
+result

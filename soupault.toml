@@ -1,0 +1,22 @@
+[settings]
+  verbose = false
+  debug = false
+  site_dir = "site"
+  build_dir = "build"
+
+  page_file_extensions = ["htm", "html", "md"]
+  keep_extensions = ["htm", "html"]
+  ignore_directories = [".stfolder"]
+
+  default_template_file = "templates/main.html"
+  default_content_selector = "content"
+  default_content_action = "replace_element"
+
+  generator_mode = true
+  complete_page_selector = "html"
+
+[widgets.header]
+  widget = "include"
+  file = "templates/head_shared.html"
+  selector = "head"
+  action = "prepend_child"
