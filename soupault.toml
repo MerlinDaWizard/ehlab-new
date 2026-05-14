@@ -8,6 +8,8 @@
   keep_extensions = ["htm", "html"]
   ignore_directories = [".stfolder"]
 
+  markdown_extensions = ["md"]
+
   default_template_file = "templates/main.html"
   default_content_selector = "content"
   default_content_action = "replace_element"
@@ -15,8 +17,46 @@
   generator_mode = true
   complete_page_selector = "html"
 
+[templates.legacy_posts]
+  file = "templates/legacy_posts.html"
+  content_selector = "content"
+  content_action = "replace_element"
+  section = "fun/"
+  path_regex = "(200.|201.|2020|2024)/.*$"
+
 [widgets.header]
   widget = "include"
   file = "templates/head_shared.html"
   selector = "head"
   action = "prepend_child"
+
+[widgets.page-title]
+  widget = "title"
+  selector = "h1"
+  default = "Edinburgh Hacklab"
+  append = " | Edinburgh Hacklab"
+  force = true
+
+[index]
+  sort_by = "date"
+  sort_descending = true
+
+[index.views.legacy]
+  path_regex = "(200.|201.|2020|2024)/.*$"
+  index_selector = "#legacy-posts-index"
+  index_item_template = """
+    <article class="index-article">
+        <span class="caption">{{date}}</span>
+        <h2><a href="{{url}}">{{title}}</a></h2>
+    </article>
+  """
+
+[index.fields]
+
+[index.fields.title]
+  selector = ["h1#post-title", "h1"]
+
+[index.fields.date]
+  selector = ["time#post-date", "time", "date"]
+  extract_attribute = "datetime"
+  fallback_to_content = true
