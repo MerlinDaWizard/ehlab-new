@@ -1,7 +1,76 @@
+/* Homepage jumbotron, with logo */
+.jumbotron {
+    text-align: center;
+    padding: 2rem;
+}
+
+#logo {
+    transition:transform 1.2s ease-in-out;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Spin on hover */
+#logo:hover { transform:rotate(360deg); }
+
+main,
+.legacy-post {
+    max-width: 110ch;
+    margin: 0 auto;
+
+    /* If a main element contains an aside, put it in a nice box at the top. */
+    /* This is used to add a disclaimer on legacy posts */
+    > aside {
+        border: var(--width-form-group-error) solid var(--colour-brand);
+        background-color: var(--colour-surface-background);
+        color: var(--colour-surface-text);
+        margin: 1lh;
+        padding: 1lh;
+    }
+}
+
+/* If a div contains a main and an aside, then put it in a grid */
+div:has(main + aside) {
+    --size-gutter: 30px;
+    --size-gutter-half: calc(var(--size-gutter) / 2);
+    --size-page-width: 960px;
+
+    display: grid;
+    grid-gap: var(--size-gutter);
+
+    max-width: var(--size-page-width);
+    margin-left: var(--size-gutter-half);
+    margin-right: var(--size-gutter-half);
+
+    /* On tablet, add full width gutters */
+    @media screen and (min-width: 641px) { /* tablet */
+        margin-right: var(--size-gutter);
+        margin-left: var(--size-gutter);
+    }
+
+    /* As soon as the viewport is greater than the width of the page plus the */
+    /* gutters, just centre the content instead of adding gutters. */
+    @media (min-width: 1020px) {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+
+    /* On small screens, only one column */
+    grid-template-columns: 1fr;
+    @media screen and (min-width: 641px) { /* tablet */
+        /* 2:1 ratio on larger screens */
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* Extra styling for legacy posts index */
 .index-article {
     margin-bottom: 2rlh;
 }
 
+/* For legacy posts */
 date {
     font-size: --font-size-16;
     &::before {
@@ -9,11 +78,13 @@ date {
     }
 }
 
+/* Misc */
 img {
     display: block;
     max-width: 100%;
 }
 
+/* Selected parts from: */
 /* GIC.css Version 1.1.0
  * (c) Copyright Ariadne (me@aria.rip) 2026.
  * Made available under the MIT license */
@@ -200,8 +271,6 @@ img {
 /*   8e  8eeee8 8eee8 8   8 8e    8eee8e 8eee8 8eee8 8eee8 8eeee8  */
 /*   88    88   88    8   8 88 "8 88   8 88  8 88    88  8   88    */
 /*   88    88   88    8eee8 88ee8 88   8 88  8 88    88  8   88 */
-html { background: var(--colour-surface-background); }
-
 body {
     font-family: var(--font-variable);
     font-weight: var(--font-weight-normal);
@@ -400,319 +469,10 @@ hr.visible { border-bottom: 1px solid var(--colour-border) }
 
 /* utilities */
 .break-word { word-break: break-word; }
-
-/*                   oo       dP           */
-/*                            88           */
-/* .d8888b. 88d888b. dP .d888b88 .d8888b.  */
-/* 88'  `88 88'  `88 88 88'  `88 Y8ooooo.  */
-/* 88.  .88 88       88 88.  .88       88  */
-/* `8888P88 dP       dP `88888P8 `88888P'  */
-/*      .88                                */
-/*  d8888P */
-main {
-    padding: var(--spacing-6) 0;
-}
-
-grid-container {
-    --size-gutter: 30px;
-    --size-gutter-half: calc(var(--size-gutter) / 2);
-    --size-page-width: 960px;
-
-    max-width: var(--size-page-width);
-
-    margin-left: var(--size-gutter-half);
-    margin-right: var(--size-gutter-half);
-
-    /* On tablet, add full width gutters */
-    @media screen and (min-width: 641px) { /* tablet */
-        margin-right: var(--size-gutter);
-        margin-left: var(--size-gutter);
-    }
-
-    /* As soon as the viewport is greater than the width of the page plus the */
-    /* gutters, just centre the content instead of adding gutters. */
-    @media (min-width: 1020px) {
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: var(--size-gutter);
-}
-
-
-/* By default, column spans only apply past the tablet breakpoint */
-.whole-row { grid-column-start: span 12; }
-.one-third { grid-column-start: span 12; }
-.two-thirds { grid-column-start: span 12; }
-.one-half { grid-column-start: span 12; }
-.one-quarter { grid-column-start: span 12; }
-.two-quarters { grid-column-start: span 12; }
-.three-quarters { grid-column-start: span 12; }
-
-/* Force applying the whole time */
-.mobile-whole-row { grid-column-start: span 12; }
-.mobile-one-third { grid-column-start: span 4; }
-.mobile-two-thirds { grid-column-start: span 8; }
-.mobile-one-half { grid-column-start: span 6; }
-.mobile-one-quarter { grid-column-start: span 3; }
-.mobile-two-quarters { grid-column-start: span 6; }
-.mobile-three-quarters { grid-column-start: span 9; }
-
-@media screen and (min-width: 641px) { /* tablet */
-    .whole-row { grid-column-start: span 12; }
-    .one-third { grid-column-start: span 4; }
-    .two-thirds { grid-column-start: span 8; }
-    .one-half { grid-column-start: span 6; }
-    .one-quarter { grid-column-start: span 3; }
-    .two-quarters { grid-column-start: span 6; }
-    .three-quarters { grid-column-start: span 9; }
-
-    .tablet-whole-row { grid-column-start: span 12; }
-    .tablet-one-third { grid-column-start: span 4; }
-    .tablet-two-thirds { grid-column-start: span 8; }
-    .tablet-one-half { grid-column-start: span 6; }
-    .tablet-one-quarter { grid-column-start: span 3; }
-    .tablet-two-quarters { grid-column-start: span 6; }
-    .tablet-three-quarters { grid-column-start: span 9; }
-}
-
-@media screen and (min-width: 769px) { /* desktop */
-    .desktop-whole-row { grid-column-start: span 12; }
-    .desktop-one-third { grid-column-start: span 4; }
-    .desktop-two-thirds { grid-column-start: span 8; }
-    .desktop-one-half { grid-column-start: span 6; }
-    .desktop-one-quarter { grid-column-start: span 3; }
-    .desktop-two-quarters { grid-column-start: span 6; }
-    .desktop-three-quarters { grid-column-start: span 9; }
-}
-
-/* _  _ ____ ____ ___  ____ ____    ____ ____ ____ ___ ____ ____  */
-/* |__| |___ |__| |  \ |___ |__/    |___ |  | |  |  |  |___ |__/  */
-/* |  | |___ |  | |__/ |___ |  \    |    |__| |__|  |  |___ |  \  */
-/*                                                                */
-header.masthead {
-    font-size: var(--font-size-16);
-    font-weight: var(--font-weight-bold);
-    line-height: 1;
-
-    border-bottom: 1px solid transparent;
-    color: var(--white);
-    background: var(--colour-brand);
-
-    padding: 16px;
-
-    a {
-        display: inline;
-        margin-right: var(--spacing-2);
-        font-size: 30px;
-        text-decoration: none;
-        color: inherit;
-
-        &:visited { color: inherit; }
-    }
-}
-
-footer {
-    font-size: var(--font-size-19);
-    line-height: var(--line-height-19);
-
-    padding: var(--spacing-5) 0;
-
-    border-top: 10px solid var(--colour-brand);
-    color: var(--colour-footer-text);
-    background: var(--colour-surface-background);
-}
-
 /* ____ ____ ____ _  _ ____  */
 /* |___ |  | |__/ |\/| [__   */
 /* |    |__| |  \ |  | ___]  */
 /*                           */
-input {
-    font-size: var(--font-size-19);
-    line-height: var(--line-height-19);
-
-    box-sizing: border-box;
-    width: 100%;
-    margin-top: 0;
-    padding: var(--spacing-1);
-
-
-    border: var(--width-input-border) var(--colour-input-border) solid;
-    border-radius: 0;
-    appearance: none;
-
-    &:focus {
-        outline: var(--width-focus) solid var(--colour-focus);
-        outline-offset: 0;
-        /* Double the border by adding its width again. Use `box-shadow` for this */
-        /* instead of changing `border-width` - this is for consistency with */
-        /* components such as textarea where we avoid changing `border-width` as */
-        /* it will change the element size. Also, `outline` cannot be utilised */
-        /* here as it is already used for the yellow focus state. */
-        box-shadow: inset 0 0 0 var(--width-input-border) var(--colour-input-border);
-    }
-
-    &:disabled {
-        opacity: 0.5;
-        color: inherit;
-        background-color: transparent;
-        cursor: not-allowed;
-    }
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-        margin: 0;
-        -webkit-appearance: none;
-    }
-
-    &[type="number"] {
-        -moz-appearance: textfield;
-    }
-
-    &.extra-letter-spacing {
-        font-variant-numeric: tabular-nums;
-        letter-spacing: 0.05em;
-    }
-
-
-    @media screen and (max-width: 640px) { /* until mobile */
-        display: block;
-        max-width: 100%;
-    }
-}
-
-input-wrapper {
-    display: flex;
-    input { flex: 0 1 auto; }
-}
-
-input-prefix, input-suffix {
-    font-family: var(--font-size-19);
-    line-height: var(--line-height-19);
-
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
-    min-width: 1rem;
-    padding: var(--spacing-1);
-    border: var(--width-input-border) var(--colour-input-border) solid;
-
-    background-color: var(--black-tint-95);
-    text-align: center;
-    white-space: nowrap;
-    cursor: default;
-
-}
-input-prefix { border-right: 0; }
-input-suffix { border-left: 0; }
-
-.width-30 { max-width: 29.5em; }
-.width-20 { max-width: 20.5em; }
-.width-10 { max-width: 11.5em; }
-.width-5 { max-width: 5.5em; }
-.width-4 { max-width: 4.5em; }
-.width-3 { max-width: 3.75em; }
-.width-2 { max-width: 2.75em; }
-
-
-form-group {
-    margin-bottom: var(--spacing-6);
-    display: block;
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-
-    &:has(.error), &:has(input:invalid) {
-        padding-left: var(--spacing-3);
-        border-left: var(--width-form-group-error) solid var(--colour-error);
-    }
-}
-
-input:invalid,
-textarea:invalid,
-form-group:has(.error) input,
-form-group:has(.error) textarea {
-    border-color: var(--colour-error);
-    &:focus { border-color: var(--colour-input-border); }
-}
-
-.error:not(a) {
-    font-size: var(--font-size-19);
-    line-height: var(--line-height-19);
-
-    font-weight: var(--font-weight-bold);
-
-    display: block;
-    margin-top: 0;
-    margin-bottom: var(--spacing-3);
-    clear: both;
-    color: var(--colour-error);
-}
-
-label {
-    display: block;
-    margin-bottom: var(--spacing-1);
-    color: var(--color-text);
-}
-
-h1 > label,
-h2 > label,
-h3 > label {
-    margin-bottom: var(--spacing-3);
-}
-
-h1 > label { font-size: var(--font-size-48); }
-
-h1:has(> label),
-h2:has(> label),
-h3:has(> label) {
-    margin: 0;
-}
-
-.hint {
-    font-size: var(--font-size-19);
-    line-height: var(--line-height-19);
-
-    display: block;
-    margin-bottom: var(--spacing-3);
-
-    color: var(--colour-secondary-text);
-}
-
-textarea {
-    font-size: var(--font-size-19);
-    line-height: 1.25;
-
-    display: block;
-    width: 100%;
-    min-height: 50px;
-    margin-bottom: var(--spacing-6);
-    padding: var(--spacing-1);
-
-    resize: vertical;
-    border: var(--width-input-border) solid var(--colour-input-border);
-    border-radius: 0;
-    -webkit-appearance: none;
-
-    &:focus {
-        outline: var(--width-focus) solid var(--colour-focus);
-        outline-offset: 0;
-        box-shadow: inset 0 0 0 var(--width-input-border) var(--colour-input-border);
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      color: inherit;
-      background-color: transparent;
-      cursor: not-allowed;
-    }
-}
-
 button {
     --button-bg: var(--green-shade-25);
     --button-bg-darker: var(--green-shade-50);
